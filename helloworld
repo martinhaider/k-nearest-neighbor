@@ -1,0 +1,16 @@
+import sklearn
+import numpy as np
+import matplotlib.pyplot as plt
+
+# read data, split into X(features) and y(labels)
+Z = np.genfromtxt('DataSet1.csv', delimiter=',')
+X, y = Z[:,:-1], Z[:,-1]
+
+# your code here:
+def print_plot(X, y):
+    plt.scatter(X[:,0], X[:,1], c=y)
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.show()
+
+print_plot(X,y)
