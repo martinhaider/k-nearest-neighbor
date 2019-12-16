@@ -5,8 +5,12 @@ To test the algorithm in higher dimensions random columns are added to the data 
 Of course in every step the solution is plotted.
 
 ## Run algorithm
-```python k-nearest-neighbor
+```
+python k-nearest-neighbor
+```
 
 ## Versions
-```python 3.7
-```pip 19.1.1
+```
+python 3.7
+pip 19.1.1
+```
