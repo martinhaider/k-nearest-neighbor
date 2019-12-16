@@ -2,10 +2,14 @@ import sklearn
 import numpy as np
 import matplotlib.pyplot as plt
 
-# read data, split into X(features) and y(labels)
+from sklearn.model_selection import KFold
+from sklearn import neighbors
+
+# Import data from .csv and split into features and labels
 Z = np.genfromtxt('data.csv', delimiter=',')
 X, y = Z[:,:-1], Z[:,-1]
 
+# Print function for scatter plot
 def print_plot(X, y):
     plt.scatter(X[:,0], X[:,1], c=y)
     plt.xlabel('x')
@@ -14,12 +18,7 @@ def print_plot(X, y):
 
 print_plot(X, y)
 
-
-#method for kNN method
-from sklearn.model_selection import KFold
-from sklearn import neighbors
-
-# your code here:
+# Calculate and plot generalization error by faetures and labels
 def show_generalization_error(X_param, y_param):
     kfold = KFold(10)
     kfold.get_n_splits(X_param)
@@ -47,10 +46,8 @@ def show_generalization_error(X_param, y_param):
 show_generalization_error(X, y)
 
 
-#flip labels of data
+# Add noise to data set: probability 1 out of 5
 np.random.seed(1234)
-
-# your code here:
 y_random = np.empty(len(y))
 
 for i in range(0, len(y), 1):
@@ -61,10 +58,9 @@ for i in range(0, len(y), 1):
 print_plot(X, y_random)
 show_generalization_error(X, y_random)
 
-#create a data frame with 1,2,3,4 additional columns
+# Add dimensions
 np.random.seed(1234)
 
-# your code here:
 for f in range(1,5,1):
     random_column = np.random.rand(len(X), f)
     Xnd = np.hstack((X, random_column))
